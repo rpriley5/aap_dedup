@@ -123,20 +123,6 @@ IP: 192.168.122.22
 
 This shows that 3 separate host entries all point to IP `192.168.122.22`, meaning the same physical machine is being counted 3 times.
 
-## Understanding the Data
-
-The `main_host.csv` file contains the following key columns:
-
-- **host_name**: The name defined in AAP inventory
-- **host_id**: Unique ID in AAP database
-- **inventory_name**: Which inventory the host belongs to
-- **organization_name**: Which organization owns it
-- **ansible_host_variable**: The actual IP/hostname that Ansible connects to
-- **last_automation**: Last time this host was automated
-
-**Duplicate Detection Logic:**
-
-Multiple `host_name` entries with the same `ansible_host_variable` value = same physical machine counted multiple times.
 
 ## Automated Collection Schedule
 
@@ -171,6 +157,3 @@ metrics_utility_cronjob_report_schedule=*-*-02 00:00:00  # 2nd of month at midni
 
 ---
 
-**Created**: 2026-04-23  
-**AAP Version**: 2.6  
-**Installation Type**: Containerized (Podman)
