@@ -116,9 +116,9 @@ python3 find_duplicates.py
 ```
 === DUPLICATE HOSTS (Same IP, Multiple Hostnames) ===
 
-IP: 192.168.122.22
+IP: 127.0.0.1
   Count: 3 hosts
-  Hostnames: node1, node2.example.com, 192.168.122.22
+  Hostnames: node1, node1.example.com, 127.0.0.1
 ```
 
 This shows that 3 separate host entries all point to IP `192.168.122.22`, meaning the same physical machine is being counted 3 times.
