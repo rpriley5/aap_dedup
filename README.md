@@ -17,7 +17,7 @@ Each entry is counted as a separate managed node, even though they're all the sa
 
 ## Prerequisites
 
-- AAP 2.6 containerized installation (single-node or multi-node)
+- AAP 2.6 containerized installation
 - Access to the inventory file used for installation
 - SSH access to the AAP host
 
