@@ -4,7 +4,7 @@ This directory contains tools and documentation for detecting duplicate host ent
 
 ## Overview
 
-The metrics-utility is a built-in tool in AAP that collects usage data for billing and reporting. When configured with the `main_host` collector, it can identify duplicate host definitions across inventories - a common issue where the same physical machine is defined multiple times (by hostname, IP, FQDN, etc.) and counted separately for licensing.
+The metrics-utility is a built-in tool in AAP that collects usage data for billing and reporting. When configured with the `main_host` collector, it can identify duplicate host definitions across inventories - a common issue where the same physical machine is defined multiple times (by hostname, IP, FQDN, etc.) and counted separately.
 
 ## Problem Statement
 
@@ -13,7 +13,7 @@ Organizations often have the same host defined multiple times across different i
 - `192.168.1.50` as a separate entry
 - `webserver01.example.com` pointing to the same IP
 
-Each entry is counted as a separate managed node, inflating license usage even though they're all the same physical machine.
+Each entry is counted as a separate managed node, even though they're all the same physical machine.
 
 ## Prerequisites
 
