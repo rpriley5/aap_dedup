@@ -1,6 +1,6 @@
 # AAP Metrics Utility - Duplicate Host Detection
 
-This directory contains tools and documentation for detecting duplicate host entries in Ansible Automation Platform (AAP) 2.6 containerized installations using the metrics-utility tool.
+This repo contains tools and documentation for detecting duplicate host entries in Ansible Automation Platform (AAP) 2.6 containerized installations using the metrics-utility tool.
 
 ## Overview
 
