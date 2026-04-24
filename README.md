@@ -25,7 +25,7 @@ Each entry is counted as a separate managed node, inflating license usage even t
 
 ### Step 1: Configure metrics-utility in Inventory File
 
-Edit your AAP installation inventory file (typically `inventory` in the installer directory) and add/update the `[automationcontroller:vars]` section:
+Edit your AAP installation inventory file and add/update the `[automationcontroller:vars]` section:
 
 ```ini
 [automationcontroller:vars]
