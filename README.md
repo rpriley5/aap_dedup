@@ -50,7 +50,7 @@ systemctl --user stop metrics-utility-gather.timer metrics-utility-build-report.
 ### Step 3: Run the Installer
 
 ```bash
-cd ~/ansible-automation-platform-containerized-setup-2.6-1
+cd ~/ansible-automation-platform-containerized-setup-2.6-<version>
 ansible-playbook -i inventory ansible.containerized_installer.install
 ```
 
@@ -74,9 +74,6 @@ Expected output should show: `METRICS_UTILITY_OPTIONAL_COLLECTORS=main_host,main
 ```bash
 # Manually trigger metrics collection
 systemctl --user start metrics-utility-gather.service
-
-# Wait for completion
-sleep 5
 
 # Check status
 systemctl --user status metrics-utility-gather.service
@@ -121,7 +118,7 @@ python3 find_duplicates.py
 
 IP: 192.168.122.22
   Count: 3 hosts
-  Hostnames: node1, node2, 192.168.122.22
+  Hostnames: node1, node2.example.com, 192.168.122.22
 ```
 
 This shows that 3 separate host entries all point to IP `192.168.122.22`, meaning the same physical machine is being counted 3 times.
@@ -158,39 +155,6 @@ Modify schedule by updating inventory and re-running installer:
 metrics_utility_cronjob_gather_schedule=*:0/30  # Every 30 minutes
 metrics_utility_cronjob_report_schedule=*-*-02 00:00:00  # 2nd of month at midnight
 ```
-
-## Troubleshooting
-
-### No main_host.csv file
-
-**Problem**: The `main_host.csv` file is missing from metrics tarballs.
-
-**Solution**: 
-1. Verify `METRICS_UTILITY_OPTIONAL_COLLECTORS` includes `main_host`
-2. Check container environment: `podman inspect metrics-utility-gather | grep OPTIONAL_COLLECTORS`
-3. Look in the daily snapshot tarball (ends with `000000+0000-000000+0000-0.tar.gz`)
-
-### Container logs show "Skipping main_host because it is not enabled"
-
-**Problem**: The optional collector wasn't configured correctly.
-
-**Solution**:
-1. Ensure inventory has `METRICS_UTILITY_OPTIONAL_COLLECTORS` in `metrics_utility_extra_settings`
-2. Remove containers before re-running installer (see Step 2)
-3. Container must be recreated to pick up new environment variables
-
-### Permission denied errors
-
-**Problem**: Path issues with tilde (`~`) expansion or wrong container paths.
-
-**Solution**:
-- Always use `/var/lib/awx/metrics_utility/` for `METRICS_UTILITY_SHIP_PATH` (container-internal path)
-- Never use `~` in the path - containers can't expand it
-
-## Files in This Directory
-
-- `README.md`: This documentation
-- `find_duplicates.py`: Python script to identify duplicate hosts from main_host.csv
 
 ## Additional Resources
 
