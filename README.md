@@ -121,7 +121,7 @@ IP: 127.0.0.1
   Hostnames: node1, node1.example.com, 127.0.0.1
 ```
 
-This shows that 3 separate host entries all point to IP `192.168.122.22`, meaning the same physical machine is being counted 3 times.
+This shows that 3 separate host entries all point to IP `127.0.0.1`, meaning the same physical machine is being counted 3 times.
 
 
 ## Automated Collection Schedule
